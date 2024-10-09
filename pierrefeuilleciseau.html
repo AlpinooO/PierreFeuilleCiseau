@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <script src="https://unpkg.com/alpinejs" defer></script>
+</head>
+
+<body>
+
+        <div x-data="{ randomNumber: Math.floor(Math.random() * 3) + 1, userNumber: null, show: false }">
+            <p>Pierre Feuille Ciseau!</p>
+            <p>L'ordinateur va choisir l'un des 3 au hasard, a vous de savoir si vous battez un ordinateur!</p>
+            <p>Choisissez soit la Pierre, soit la Feuille, soit le Ciseau.:</p>
+            <button @click="userNumber = 1; show = true">Pierre</button>
+            <button @click="userNumber = 2; show = true">Feuille</button>
+            <button @click="userNumber = 3; show = true">Ciseau</button>
+            
+    
+            <template x-if="show">
+                <div>
+                    <p>L'ordinateur a choisi :
+                        <span x-text="randomNumber === 1 ? 'Pierre' : randomNumber === 2 ? 'Feuille' : 'Ciseau'"></span>
+                    </p>
+    
+                    <template x-if="userNumber === 1 && randomNumber === 1">
+                        <div>C'est une égalité ! Vous avez tous les deux choisi Pierre.</div>
+                    </template>
+                    <template x-if="userNumber === 1 && randomNumber === 2">
+                        <div>La Feuille bat la Pierre ! Perdu.</div>
+                    </template>
+                    <template x-if="userNumber === 1 && randomNumber === 3">
+                        <div>La Pierre bat le Ciseau ! Gagné.</div>
+                    </template>
+    
+
+                    <template x-if="userNumber === 2 && randomNumber === 2">
+                        <div>C'est une égalité ! Vous avez tous les deux choisi Feuille.</div>
+                    </template>
+                    <template x-if="userNumber === 2 && randomNumber === 1">
+                        <div>La Feuille bat la Pierre ! Gagné.</div>
+                    </template>
+                    <template x-if="userNumber === 2 && randomNumber === 3">
+                        <div>Le Ciseau bat la Feuille ! Perdu.</div>
+                    </template>
+    
+
+                    <template x-if="userNumber === 3 && randomNumber === 3">
+                        <div>C'est une égalité ! Vous avez tous les deux choisi Ciseau.</div>
+                    </template>
+                    <template x-if="userNumber === 3 && randomNumber === 1">
+                        <div>La Pierre bat le Ciseau ! Perdu.</div>
+                    </template>
+                    <template x-if="userNumber === 3 && randomNumber === 2">
+                        <div>Le Ciseau bat la Feuille ! Gagné.</div>
+                    </template>
+
+                </div>
+            </template>
+        </div>
+
+</body>
+
+</html>
